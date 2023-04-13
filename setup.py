@@ -5,7 +5,7 @@ with open("README.md", "r") as file:
 
 setup(
     name="bazingo",
-    version="0.0.1",
+    version="0.0.2",
     description="A `Notebook` replacement for tkinter",
     long_description=long_description,
     long_description_content_type="text/markdown",

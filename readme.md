@@ -1,4 +1,4 @@
-# Bazingo 0.0.1
+# Bazingo 0.0.2
 
 Bazingo aims to replace the conventional `Notebook` widget with a less buggy and more customizable alternative.
 
