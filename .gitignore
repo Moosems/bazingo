@@ -1,0 +1,7 @@
+info.txt
+.dist/
+dist/
+bazingo.egg-info/
+bazingo/__pycache__/
+bazingo/.DS_Store
+.DS_Store
