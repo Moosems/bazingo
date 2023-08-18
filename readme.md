@@ -86,9 +86,6 @@ for i in range(100):
     lbl.grid(row=0, column=i)
     counter += 1
 
-# Call the magic method to update the canvas window size
-frame.update_canvas_window_size()
-
 # Run the app
 root.mainloop()
 ```

@@ -11,15 +11,10 @@ def scroll_fix(delta: int) -> int:
     # The scroll events passed by macOS, Linux, and Windows are different,
     # so they must to be rectified to work properly when dealing with the events.
     # Originally found here: https://stackoverflow.com/a/17457843/17053202
-    if delta in (4, 5):  # X11 (maybe macOS with X11 too)
+    if delta in (4, 5):
+        # Linux device
         return 1 if delta == 4 else -1
-
-    if SYSTEM == "Darwin":  # macOS
-        return -delta
-
-    # Windows, needs to be divided by 120
-    return -(delta // 120)
-
+    return -delta if SYSTEM == "Darwin" else delta // 120
 
 class ScrollableFrame(Frame):
     """A frame that allows for both horizontal and vertical scrolling."""
@@ -43,9 +38,6 @@ class ScrollableFrame(Frame):
         lbl = Label(frame, text=f"Label {counter}")
         lbl.grid(row=0, column=i)
         counter += 1
-
-    # Call the magic method to update the canvas window size
-    frame.update_canvas_window_size()
 
     # Run the app
     root.mainloop()
@@ -117,9 +109,11 @@ class ScrollableFrame(Frame):
             ),
         )
 
+        self.bind("<Map>", lambda _: self.update_canvas_window_size())
+
     def destroy(self) -> None:
         """Destroys the widget"""
-        self.parent_frame.destroy() # Destroys all children
+        Frame.destroy(self)
 
     def create_binds(self, _: Event) -> None:
         """Binds the mousewheel to the canvas"""
