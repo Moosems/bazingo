@@ -13,7 +13,7 @@ def scroll_fix(delta: int) -> int:
     # Originally found here: https://stackoverflow.com/a/17457843/17053202
     if delta in (4, 5):
         # Linux device
-        return 1 if delta == 4 else -1
+        return 1 if delta == 5 else -1
     return -delta if SYSTEM == "Darwin" else delta // 120
 
 class ScrollableFrame(Frame):
